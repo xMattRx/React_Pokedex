@@ -1,23 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+import Container from './components/Container/Container.jsx';
+import PokemonCard from './components/PokemonCard/PokemonCard.jsx';
+import Titulo from './components/Titulo/Titulo.jsx';
+
 
 function App() {
+
+  const [pokemon, setPokemon] = useState([]);
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Titulo />
+      <Container>
+
+
+
+      </Container>
     </div>
   );
 }
