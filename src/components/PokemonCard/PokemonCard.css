@@ -1,21 +1,28 @@
 .Card {
   background-color: white;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  flex-direction: row-reverse;
   min-width: 100px;
-  width: 150px;
+  width: 250px;
   margin: 10px;
   padding: 10px;
-  border-radius: 5px;
-  border: 5px outset;
+  border-radius: 20px;
+  cursor: pointer;
+  color: white;
 }
 .Card img {
-  background-color: #293744;
-  border-radius: 5px;
-  width: 100%;
+  width: 50%;
 }
 .Card .Nome {
-  text-align: center;
+  text-transform: capitalize;
+}
+.Card .Descricoes {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.Card .Id {
+  margin: 0;
+  text-align: left;
 }

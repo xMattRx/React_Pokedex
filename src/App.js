@@ -15,7 +15,7 @@ function App() {
 
   const catchPokemons = async () => {
     let array = []
-    for (let i = 1; i <= 10; i++) {
+    for (let i = 1; i <= 100; i++) {
       await axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`)
         .then((response) => {
           array.push(response.data)
