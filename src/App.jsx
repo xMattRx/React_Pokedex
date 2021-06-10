@@ -2,59 +2,27 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-loop-func */
 import "./App.css";
-import React, { useState, useEffect } from "react";
-import Container from "./components/Container/Container.jsx";
+import React from "react";
 import Titulo from "./components/Titulo/Titulo.jsx";
-import axios from "axios";
-import PokemonCard from "./components/PokemonCard/PokemonCard";
-import { Route, Switch, Link, BrowserRouter } from "react-router-dom";
-import IndividualPokemon from "./IndividualPokemon";
+import IndividualPokemon from "./IndividualPokemon.jsx";
+import { Route, BrowserRouter, Switch } from "react-router-dom";
+import ListagemPokemon from "./components/ListagemPokemon/ListagemPokemon.jsx";
 
 function App() {
-  const [pokemon, setPokemon] = useState([]);
-
-  const catchPokemons = async () => {
-    let array = [];
-    for (let i = 1; i <= 100; i++) {
-      await axios
-        .get(`https://pokeapi.co/api/v2/pokemon/${i}`)
-        .then((response) => {
-          array.push(response.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-    setPokemon(array);
-  };
-  useEffect(catchPokemons, []);
-
   return (
     <BrowserRouter>
-      <Switch>
-        <div className="App">
-          <Titulo />
-
+      <div className="App">
+        <Titulo />
+        <Switch>
           <Route exact path="/">
-            <Container>
-              {pokemon.map((pokemon, id) => {
-                let nomePokemon = "/IndividualPokemon/" + pokemon.name;
-                return (
-                  <div>
-                    <Link to={nomePokemon}>
-                      <PokemonCard key={pokemon.order} pokemon={pokemon} />
-                    </Link>
-                  </div>
-                );
-              })}
-            </Container>
+            <ListagemPokemon />
           </Route>
-        </div>
 
-        <Route path="/IndividualPokemon">
-          <IndividualPokemon />
-        </Route>
-      </Switch>
+          <Route path="/IndividualPokemon">
+            <IndividualPokemon />
+          </Route>
+        </Switch>
+      </div>
     </BrowserRouter>
   );
 }
