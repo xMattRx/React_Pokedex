@@ -1,14 +1,10 @@
-body {
-  background-image: url(/src/Assets/fundo.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  overflow-x: hidden;
-  font-family: "Yanone Kaffeesatz", sans-serif;
-}
 .teste {
   width: 200px;
   height: 250px;
   margin: 5px;
   background-color: red;
+}
+
+a {
+  text-decoration: none;
 }

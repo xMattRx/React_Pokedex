@@ -1,5 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-import React, { useEffect, useState } from "react";
+
 import "./PokemonCard.css";
 export default (props) => {
   const tipos = props.pokemon.types;
@@ -25,7 +25,13 @@ export default (props) => {
   let cor = cores[tipos[0].type.name];
 
   return (
-    <div style={{ backgroundColor: cor }} className="Card">
+    <div
+      style={{
+        backgroundColor: cor,
+        boxShadow: `1px 2px 5px black`,
+      }}
+      className="Card"
+    >
       <img src={imagem} alt={nome} />
       <div className="Descricoes">
         <p className="Nome">{nome}</p>
