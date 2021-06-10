@@ -14,13 +14,16 @@ function App() {
 
 
   const catchPokemons = async () => {
-
-    await axios.get("https://pokeapi.co/api/v2/pokemon")
-      .then((response) => {
-        setPokemon(response.data.results)
-      }).catch((err) => {
-        console.log(err)
-      })
+    let array = []
+    for (let i = 1; i <= 10; i++) {
+      await axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`)
+        .then((response) => {
+          array.push(response.data)
+        }).catch((err) => {
+          console.log(err)
+        })
+    }
+    setPokemon(array)
   }
 
   useEffect(catchPokemons,
@@ -30,10 +33,8 @@ function App() {
     <div className="App">
       <Titulo />
       <Container >
-        {pokemon.map((e) => {
-
-          return <PokemonCard pokemon={e} />
-
+        {pokemon.map((pokemon, id) => {
+          return <PokemonCard key={pokemon.order} pokemon={pokemon} />
         }
         )}
       </Container>
