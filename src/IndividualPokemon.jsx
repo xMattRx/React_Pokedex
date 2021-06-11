@@ -4,6 +4,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./IndividualPokemon.css";
+import Container from "./components/Container/Container";
 
 export default () => {
   const [dados, setDados] = useState(null);
@@ -30,14 +31,16 @@ export default () => {
 
   return (
     <>
-      {dados ? (
-        <div className="Individual">
-          <h2>{dados.name}</h2>
-          <img src={dados.sprites.other["official-artwork"].front_default} />
-        </div>
-      ) : (
-        <p className="Carregando">Loading</p>
-      )}
+      <Container>
+        {dados ? (
+          <div className="Individual">
+            <h2>{dados.name}</h2>
+            <img src={dados.sprites.other["official-artwork"].front_default} />
+          </div>
+        ) : (
+          <p className="Carregando">Loading</p>
+        )}
+      </Container>
     </>
   );
 };

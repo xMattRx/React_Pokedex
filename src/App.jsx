@@ -2,7 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-loop-func */
 import "./App.css";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Titulo from "./components/Titulo/Titulo.jsx";
 import axios from "axios";
 import IndividualPokemon from "./IndividualPokemon.jsx";
@@ -15,17 +15,18 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Titulo />
-        <Container>
-          <Switch>
-            <Route exact path="/">
-              <ListagemPokemon />
-            </Route>
 
-            <Route path="/IndividualPokemon">
-              <IndividualPokemon />
-            </Route>
-          </Switch>
-        </Container>
+        <Switch>
+          <Route exact path="/">
+            <div className="Container2">
+              <ListagemPokemon />
+            </div>
+          </Route>
+
+          <Route path="/IndividualPokemon">
+            <IndividualPokemon />
+          </Route>
+        </Switch>
       </div>
     </BrowserRouter>
   );

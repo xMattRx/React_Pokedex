@@ -3,22 +3,25 @@
 /* eslint-disable import/no-anonymous-default-export */
 
 import PokemonCard from "../PokemonCard/PokemonCard.jsx";
-import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./ListagemPokemon.css";
+import Container from "../Container/Container.jsx";
+import axios from "axios";
 
 export default () => {
-  const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon");
+  const [url, setUrl] = useState(
+    "https://pokeapi.co/api/v2/pokemon?limit=100&offset=0"
+  );
   const [pokemon, setPokemon] = useState([]);
   const [loading, setLoading] = useState(true);
   const [next, setNext] = useState("");
   const [previous, setPrevious] = useState("");
-  const [paginas, setPaginas] = useState(0);
+  const [paginas, setPaginas] = useState(9);
 
-  const catchPokemons = async () => {
+  const catchPokemons = async (path = url) => {
     axios
-      .get(url)
+      .get(path)
       .then(async (response) => {
         let array = await mapeiaPokemons(response.data.results);
         setPokemon(array);
@@ -41,30 +44,50 @@ export default () => {
     return resposta;
   };
 
+  const encaminhar = (paraOnde) => {
+    if (paraOnde) {
+      setLoading(true);
+      catchPokemons(paraOnde);
+    }
+  };
+
   useEffect(catchPokemons, []);
 
   {
     return (
       <>
         {loading ? (
-          <p>Carregando</p>
+          <p className="Carregando">Carregando</p>
         ) : (
-          <div>
-            {console.log("Pokemon:", pokemon)}
-            {pokemon.map((pokemon, index) => {
-              let nomePokemon = "/IndividualPokemon/" + pokemon.data.name;
-              return (
-                <div key={index}>
-                  <Link to={nomePokemon}>
-                    <PokemonCard
-                      key={pokemon.data.order}
-                      pokemon={pokemon.data}
-                    />
-                  </Link>
-                </div>
-              );
-            })}
-          </div>
+          <>
+            <Container>
+              <>
+                {console.log("Pokemon:", pokemon)}
+                {pokemon.map((pokemon, index) => {
+                  let nomePokemon = "/IndividualPokemon/" + pokemon.data.name;
+                  return (
+                    <div key={index}>
+                      <Link to={nomePokemon}>
+                        <PokemonCard
+                          key={pokemon.data.order}
+                          pokemon={pokemon.data}
+                        />
+                      </Link>
+                    </div>
+                  );
+                })}
+              </>
+            </Container>
+
+            <div className="paginacao">
+              <button onClick={() => encaminhar(previous)} className="Anterior">
+                Anterior
+              </button>
+              <button onClick={() => encaminhar(next)} className="Proximo">
+                Proximo
+              </button>
+            </div>
+          </>
         )}
       </>
     );
