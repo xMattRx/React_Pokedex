@@ -32,18 +32,13 @@ export default () => {
   };
 
   const mapeiaPokemons = async (props) => {
-    let array = [];
-    props.map((elemento, index) => {
-      axios
-        .get(elemento.url)
-        .then((response) => {
-          array.push(response.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    });
-    return array;
+    let resposta = await Promise.all(
+      props.map(async (pokemonData) => {
+        let registroPokemon = await axios.get(pokemonData.url);
+        return registroPokemon;
+      })
+    );
+    return resposta;
   };
 
   useEffect(catchPokemons, []);
@@ -55,13 +50,16 @@ export default () => {
           <p>Carregando</p>
         ) : (
           <div>
-            {console.log("Pokemon:", pokemon[0])}
+            {console.log("Pokemon:", pokemon)}
             {pokemon.map((pokemon, index) => {
-              let nomePokemon = "/IndividualPokemon/" + pokemon.name;
+              let nomePokemon = "/IndividualPokemon/" + pokemon.data.name;
               return (
                 <div key={index}>
                   <Link to={nomePokemon}>
-                    <PokemonCard key={pokemon.order} pokemon={pokemon} />
+                    <PokemonCard
+                      key={pokemon.data.order}
+                      pokemon={pokemon.data}
+                    />
                   </Link>
                 </div>
               );
