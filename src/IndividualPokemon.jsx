@@ -3,16 +3,14 @@
 /* eslint-disable import/no-anonymous-default-export */
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "./IndividualPokemon.css";
 
 export default () => {
   const [dados, setDados] = useState(null);
-  const [nomePokemon, setPokemon] = useState("");
-
   const detectaPokemon = () => {
     let pokemon = window.location.href.split("/");
     let tamanho = pokemon.length;
     pokemon = pokemon[tamanho - 1];
-
     return pokemon;
   };
 
@@ -22,7 +20,6 @@ export default () => {
       .get(`https://pokeapi.co/api/v2/pokemon/${detectaPokemon()}`)
       .then((response) => {
         setDados(response.data);
-        console.log(dados.sprites);
       })
       .catch((err) => {
         console.log(err);
@@ -34,15 +31,12 @@ export default () => {
   return (
     <>
       {dados ? (
-        <div>
-          <h1>{nomePokemon}</h1>
-
-          <div>
-            <img src={dados.sprites.other["official-artwork"].front_default} />
-          </div>
+        <div className="Individual">
+          <h2>{dados.name}</h2>
+          <img src={dados.sprites.other["official-artwork"].front_default} />
         </div>
       ) : (
-        <div>Loading</div>
+        <p className="Carregando">Loading</p>
       )}
     </>
   );
