@@ -2,12 +2,16 @@
 import React from "react";
 import "./CardIndividual.css";
 import Cores from "../PokemonCard/Cores/Cores.js";
+import Types from "./Types/Types.jsx";
 
 export default ({ dados }) => {
-  console.log(dados);
-  const name = dados.name;
+  const nome = dados.name;
   const imagem = dados.sprites.other["official-artwork"].front_default;
   const tipos = dados.types;
+  const id = dados.id;
+  const height = dados.height / 10;
+  const weight = dados.weight / 10;
+  const types = dados.types;
   let corCard = Cores[tipos[0].type.name];
 
   return (
@@ -17,8 +21,12 @@ export default ({ dados }) => {
       }}
       className="CardIndividual"
     >
-      <p className="Nome">{name}</p>
-      <img src={imagem} alt={name} />
+      <h2 className="name">{nome}</h2>
+      <img src={imagem} alt={nome} />
+      <p className="id">#{id}</p>
+      <p className="height">Height: {height} metres</p>
+      <p className="weight">Weight: {weight} kilograms</p>
+      <Types types={types} />
     </div>
   );
 };

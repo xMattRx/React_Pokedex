@@ -1,0 +1,15 @@
+.Types {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+.Type {
+  color: white;
+  margin: 0px 10px;
+  padding: 6px;
+  border-radius: 15px;
+  box-shadow: 1px 2px 1px black;
+}
