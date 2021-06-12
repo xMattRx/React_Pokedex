@@ -19,7 +19,6 @@ export default ({ dados }) => {
 
   return (
     <div>
-      {console.log(stats)}
       <div
         style={{
           backgroundColor: corCard,

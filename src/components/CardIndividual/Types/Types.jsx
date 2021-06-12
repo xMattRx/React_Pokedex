@@ -7,9 +7,10 @@ export default ({ types }) => {
   return (
     <>
       <div className="Types">
-        {types.map((elemento) => {
+        {types.map((elemento, index) => {
           return (
             <p
+              key={index}
               style={{
                 backgroundColor: Cores[elemento.type.name],
               }}
