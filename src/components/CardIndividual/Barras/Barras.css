@@ -1,0 +1,29 @@
+.Barras {
+  display: flex;
+  margin: 10px 0px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.Barras .Barra {
+  margin: 5px 0px;
+}
+.Barras p,
+.Barras .Barra {
+  display: inline-block;
+}
+.Barras .Barra,
+.Barras .Preenchendo {
+  border-radius: 10px;
+}
+.Barras .Barra {
+  margin-left: 5px;
+  height: 20px;
+  width: 100%;
+  background-color: white;
+  border: 1px solid black;
+}
+.Barras .Barra .Preenchendo {
+  height: 100%;
+  color: rgb(61, 61, 61);
+}
