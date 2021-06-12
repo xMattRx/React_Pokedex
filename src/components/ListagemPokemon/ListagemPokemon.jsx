@@ -17,7 +17,6 @@ export default () => {
   const [loading, setLoading] = useState(true);
   const [next, setNext] = useState("");
   const [previous, setPrevious] = useState("");
-  const [paginas, setPaginas] = useState(9);
 
   const catchPokemons = async (path = url) => {
     axios

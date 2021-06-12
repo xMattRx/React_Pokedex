@@ -1,0 +1,13 @@
+.CardIndividual {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 1px 2px 5px black;
+  border: 1px solid black;
+}
+.CardIndividual img {
+  width: 200px;
+}

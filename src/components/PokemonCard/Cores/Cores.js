@@ -15,6 +15,8 @@ const Cores = {
   normal: "#B1B1B1",
   ghost: "#111",
   ice: "#9EE4D9",
+  dark: "#000000",
+  steel: "#43464B"
 };
 
 export default Cores;
