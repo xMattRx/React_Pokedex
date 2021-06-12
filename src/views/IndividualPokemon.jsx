@@ -4,9 +4,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./IndividualPokemon.css";
-import Container from "./components/Container/Container";
-
-import CardIndividual from "./components/CardIndividual/CardIndividual";
+import Container from "../components/Container/Container";
+import CardIndividual from "../components/CardIndividual/CardIndividual";
 
 export default () => {
   const [dados, setDados] = useState(null);

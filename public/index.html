@@ -11,14 +11,28 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <link rel="stylesheet" href="./style.css">
 
   <title>React App</title>
 </head>
 
 <body>
-  <noscript>You need to enable JavaScript to run this app.</noscript>
-  <div id="root"></div>
+  <!--Reaproveitei um código JS que tinha salvo-->
+  <div class="controls">
+    <p id="pause" onclick="pause()">
+      &#9612; &#9612;
+    </p>
+    <p id="play" onclick="play()">
+      &#9658;
+    </p>
+  </div>
+  <audio id="audio" preload="auto">
+    <source src="./Abertura.m4a" type="audio/mpeg" />
+  </audio>
 
+
+  <div id="root"></div>
+  <script src="./audio.js"></script>
 </body>
 
 </html>

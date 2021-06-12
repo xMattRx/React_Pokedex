@@ -10,7 +10,7 @@ import Container from "../Container/Container.jsx";
 import axios from "axios";
 
 export default () => {
-  const [url, setUrl] = useState(
+  const [url] = useState(
     "https://pokeapi.co/api/v2/pokemon?limit=100&offset=0"
   );
   const [pokemon, setPokemon] = useState([]);
@@ -61,7 +61,6 @@ export default () => {
           <>
             <Container>
               <>
-                {console.log("Pokemon:", pokemon)}
                 {pokemon.map((pokemon, index) => {
                   let nomePokemon = "/IndividualPokemon/" + pokemon.data.name;
                   return (

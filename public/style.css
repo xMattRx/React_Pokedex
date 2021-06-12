@@ -1,0 +1,12 @@
+.controls {
+  color: white;
+}
+#play,
+#pause {
+  margin-left: 10px;
+  cursor: pointer;
+}
+#play:hover,
+#pause:hover {
+  color: yellow;
+}

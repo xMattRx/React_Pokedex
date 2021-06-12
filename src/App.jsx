@@ -2,19 +2,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-loop-func */
 import "./App.css";
-import React, { useState, useEffect } from "react";
-import Titulo from "./components/Titulo/Titulo.jsx";
-import axios from "axios";
-import IndividualPokemon from "./IndividualPokemon.jsx";
+import React from "react";
+import Header from "./components/Header/Header.jsx";
+import IndividualPokemon from "./views/IndividualPokemon.jsx";
 import { Route, BrowserRouter, Switch } from "react-router-dom";
 import ListagemPokemon from "./components/ListagemPokemon/ListagemPokemon.jsx";
-import Container from "./components/Container/Container";
 
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Titulo />
+        <Header />
 
         <Switch>
           <Route exact path="/">
