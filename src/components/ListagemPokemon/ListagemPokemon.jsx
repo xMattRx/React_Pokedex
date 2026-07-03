@@ -167,6 +167,20 @@ export default function ListagemPokemon() {
     if (el && obs) obs.observe(el);
   }, []);
 
+  // O IntersectionObserver só dispara na *transição* para "intersecting".
+  // Depois que um lote carrega, se o sentinela continuar visível (dentro do
+  // rootMargin) nenhum evento novo ocorre e o scroll trava. Ao reobservar o
+  // sentinela forçamos uma reavaliação: se ainda estiver visível, carrega o
+  // próximo lote; caso contrário, para até o usuário rolar mais.
+  useEffect(() => {
+    const obs = observerRef.current;
+    const el = sentinelElRef.current;
+    if (!loadingBatch && obs && el) {
+      obs.unobserve(el);
+      obs.observe(el);
+    }
+  }, [loadingBatch, visibleCount]);
+
   const onSearchChange = (e) => {
     const v = e.target.value;
     searchRef.current = v;
