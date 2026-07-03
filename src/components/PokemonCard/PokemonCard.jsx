@@ -1,24 +1,48 @@
-/* eslint-disable import/no-anonymous-default-export */
-
+import React from "react";
 import "./PokemonCard.css";
-import Descricoes from "./Descricoes/Descricoes";
-import Cores from "./Cores/Cores.js";
-export default (props) => {
-  const imagem = props.pokemon.sprites.other["official-artwork"].front_default;
-  const tipos = props.pokemon.types;
-  const nome = props.pokemon.name;
-  const id = props.pokemon.id;
-  let corCard = Cores[tipos[0].type.name];
+import { TYPE_COLORS, cap, badgeStyle } from "../../constants/pokemon";
+
+// Card do grid. Recebe o objeto de detalhe cru da PokeAPI e deriva o visual aqui.
+// `index` controla o atraso da animação de entrada (efeito escalonado).
+export default function PokemonCard({ pokemon, index = 0, onClick }) {
+  const img =
+    (pokemon.sprites.other &&
+      pokemon.sprites.other["official-artwork"] &&
+      pokemon.sprites.other["official-artwork"].front_default) ||
+    pokemon.sprites.front_default;
+
+  const primary = TYPE_COLORS[pokemon.types[0].type.name] || "#999";
+  const numberLabel = "#" + String(pokemon.id).padStart(3, "0");
 
   return (
     <div
+      className="card"
+      onClick={onClick}
       style={{
-        backgroundColor: corCard,
+        "--i": index,
+        background: `linear-gradient(180deg, ${primary}17 0%, #fff 55%)`,
       }}
-      className="Card"
     >
-      <Descricoes id={id} tipos={tipos} nome={nome} />
-      <img src={imagem} alt={nome} />
+      <div
+        className="accent"
+        style={{
+          background: `linear-gradient(90deg, ${primary}, ${primary}99)`,
+        }}
+      />
+      <span className="num">{numberLabel}</span>
+      <img className="sprite" src={img} alt={pokemon.name} loading="lazy" />
+      <div className="name">{cap(pokemon.name)}</div>
+      <div className="types">
+        {pokemon.types.map((t) => (
+          <span
+            key={t.type.name}
+            className="badge"
+            style={badgeStyle(t.type.name)}
+          >
+            {cap(t.type.name)}
+          </span>
+        ))}
+      </div>
     </div>
   );
-};
+}
