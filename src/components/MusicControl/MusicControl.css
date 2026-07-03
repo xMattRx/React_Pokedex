@@ -1,0 +1,31 @@
+.music-btn {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+  background: #fff;
+  color: rgba(0, 0, 0, 0.55);
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease,
+    transform 0.15s ease;
+}
+
+.music-btn:hover {
+  color: #1a1a1a;
+  border-color: rgba(0, 0, 0, 0.3);
+}
+
+.music-btn:active {
+  transform: scale(0.94);
+}
+
+/* Estado tocando: leve destaque para indicar áudio ativo, sem chamar atenção. */
+.music-btn[aria-pressed="true"] {
+  color: #1a1a1a;
+  border-color: rgba(0, 0, 0, 0.22);
+}

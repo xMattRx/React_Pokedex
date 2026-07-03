@@ -1,18 +1,89 @@
-header {
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(250, 250, 250, 0.92);
+  backdrop-filter: saturate(180%) blur(8px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.header-inner {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 20px 32px 14px;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.title {
+  font-family: "Fredoka", -apple-system, sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.01em;
+  flex: none;
+  color: #1a1a1a;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  flex: 1;
   align-items: center;
 }
-header h1 {
-  font-family: "Play", sans-serif;
-  text-align: center;
-  cursor: default;
-  color: red;
-  text-shadow: 2px 2px #111;
-  font-size: 2.5rem;
+
+.search {
+  flex: 1;
+  min-width: 220px;
+  padding: 9px 14px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+  font-size: 13px;
+  background: #fff;
+  color: #1a1a1a;
+  outline: none;
+  transition: border-color 0.15s ease;
 }
-header .logo {
-  height: 5rem;
-  margin-top: 5px;
+
+.search:focus {
+  border-color: rgba(0, 0, 0, 0.3);
+}
+
+.search::placeholder {
+  color: rgba(0, 0, 0, 0.35);
+}
+
+.select {
+  padding: 9px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+  font-size: 13px;
+  background: #fff;
+  color: #1a1a1a;
+  outline: none;
+  cursor: pointer;
+}
+
+.count-row {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 32px 14px;
+}
+
+.count {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.4);
+  font-weight: 500;
+}
+
+@media (max-width: 640px) {
+  .header-inner {
+    padding: 16px 16px 10px;
+  }
+  .count-row {
+    padding: 0 16px 10px;
+  }
 }
